@@ -1,0 +1,18 @@
+// This is a generated file
+import * as models from './models';
+import { Response } from "express";
+
+{{#each def.routes}}
+{{#each methods}}
+{{#if action.response.body}}
+export const {{action.name}} = (res: Response, body: models.{{action.response.body}}) => {
+  return res.status({{action.response.status}}).json(body);
+};
+{{^}}
+export const {{action.name}} = (res: Response) => {
+  return res.status({{action.response.status}}).json();
+};
+{{/if}}
+
+{{/each}}
+{{/each}}

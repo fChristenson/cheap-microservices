@@ -1,0 +1,50 @@
+// This is a generated file
+
+// Interfaces
+{{#each models}}
+{{#if model}}
+export interface {{interface}} {
+  {{#each fields}}
+  {{#if array}}
+  {{key}}: {{type}}[];
+  {{^}}
+  {{key}}: {{type}};
+  {{/if}}
+  {{/each}}
+}
+
+{{/if}}
+{{/each}}
+// Models
+{{#each models}}
+{{#if model}}
+export const {{name}} = (
+  {{#each fields}}
+  {{#if array}}
+  {{key}}: {{type}}[],
+  {{^}}
+  {{key}}: {{type}},
+  {{/if}}
+  {{/each}}
+): {{interface}} => {
+  return {
+{{#each fields}}
+  {{key}},
+{{/each}}
+  }
+};
+
+{{/if}}
+{{/each}}
+
+// Enums
+{{#each models}}
+{{#if enum}}
+export enum {{name}} {
+  {{#each fields}}
+  {{key}},
+  {{/each}}
+}
+
+{{/if}}
+{{/each}}

@@ -1,0 +1,129 @@
+{
+  "routes": [
+    {
+      "path": "/api/v1/payments",
+      "methods": [
+        {
+          "method": "get",
+          "action": {
+            "name": "listPayments",
+            "response": {
+              "status": 200,
+              "body": {
+                "$ref": "#/schemas/ListPaymentsResponse/interface"
+              }
+            }
+          }
+        },
+        {
+          "method": "post",
+          "action": {
+            "name": "createPayment",
+            "requestBody": {
+              "$ref": "#/schemas/CreatePaymentRequest/interface"
+            },
+            "response": {
+              "status": 201
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "schemas": {
+    "ListPaymentsResponse": {
+      "model": true,
+      "name": "ListPaymentsResponse",
+      "interface": "IListPaymentsResponse",
+      "fields": [
+        {
+          "key": "payments",
+          "array": true,
+          "type": {
+            "$ref":"#/schemas/Payment/interface"
+          }
+        }
+      ]
+    },
+    "CreatePaymentRequest": {
+      "model": true,
+      "name": "CreatePaymentRequest",
+      "interface": "ICreatePaymentRequest",
+      "fields": [
+        {
+          "key": "bookId",
+          "type": "number"
+        },
+        {
+          "key": "quantity",
+          "type": "number"
+        }
+      ]
+    },
+    "Order": {
+      "model": true,
+      "name": "Order",
+      "interface": "IOrder",
+      "fields": [
+        {
+          "key": "bookId",
+          "type": "number"
+        },
+        {
+          "key": "quantity",
+          "type": "number"
+        },
+        {
+          "key": "cost",
+          "type": "string"
+        }
+      ]
+    },
+    "Payment": {
+      "model": true,
+      "name": "Payment",
+      "interface": "IPayment",
+      "fields": [
+        {
+          "key": "id",
+          "type": "string"
+        },
+        {
+          "key": "order",
+          "type": {
+            "$ref": "#/schemas/Order/interface"
+          }
+        }
+      ]
+    },
+    "Cost": {
+      "model": true,
+      "name": "Cost",
+      "interface": "ICost",
+      "fields": [
+        {
+          "key": "amount",
+          "type": "number"
+        },
+        {
+          "key": "currency",
+          "type": {
+            "$ref": "#/schemas/Currency/name"
+          }
+        }
+      ]
+    },
+    "Currency": {
+      "enum": true,
+      "name": "Currency",
+      "fields": [
+        {
+          "key": "SEK"
+        },
+        {
+          "key": "EUR"
+        }
+      ]
+    }
+  }
+}

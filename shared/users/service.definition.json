@@ -1,0 +1,72 @@
+{
+  "routes": [
+    {
+      "path": "/api/v1/users",
+      "methods": [
+        {
+          "method": "get",
+          "action": {
+            "name": "listUsers",
+            "response": {
+              "status": 200,
+              "body": {
+                "$ref": "#/schemas/ListUsersResponse/interface"
+              }
+            }
+          }
+        },
+        {
+          "method": "post",
+          "action": {
+            "name": "createUser",
+            "requestBody": {
+              "$ref": "#/schemas/CreateUserRequest/interface"
+            },
+            "response": {
+              "status": 201
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "schemas": {
+    "ListUsersResponse": {
+      "name": "ListUsersResponse",
+      "interface": "IListUsersResponse",
+      "fields": [
+        {
+          "key": "users",
+          "array": true,
+          "type": {
+            "$ref":"#/schemas/User/interface"
+          }
+        }
+      ]
+    },
+    "CreateUserRequest": {
+      "name": "CreateUserRequest",
+      "interface": "ICreateUserRequest",
+      "fields": [
+        {
+          "key": "name",
+          "type": "string"
+        }
+      ]
+    },
+    "User": {
+      "name": "User",
+      "interface": "IUser",
+      "fields": [
+        {
+          "key": "id",
+          "type": "number"
+        },
+        {
+          "key": "name",
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

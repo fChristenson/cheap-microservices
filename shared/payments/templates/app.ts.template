@@ -1,0 +1,21 @@
+// This is a generated file
+import express, { Response, Request } from "express";
+import * as actions from './actions';
+
+export const app = express();
+
+app.use(express.json());
+
+{{#each def.routes}}
+{{#each methods}}
+app.{{method}}("{{../path}}", actions.{{action.name}});
+{{/each}}
+{{/each}}
+
+app.use((_: Request, res: Response) => {
+  res.status(404).json({error: "not found"});
+});
+
+app.use((error: Error, _: Request, res: Response) => {
+  res.status(500).json({error: error.message});
+});
