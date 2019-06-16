@@ -19,7 +19,6 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/express": "^4.16.1",
-    "@types/jest": "^24.0.13",
     "@types/node": "^11.13.8",
     "handlebars": "^4.1.2",
     "json-schema-ref-parser": "^6.1.0",
