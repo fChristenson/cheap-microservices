@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "start:books": "PORT=3001 nodemon ./books/server.ts --exec ts-node",
     "start:users": "PORT=3002 nodemon ./users/server.ts --exec ts-node",
     "start:payments": "PORT=3000 nodemon ./payments/server.ts --exec ts-node",
