@@ -16,17 +16,3 @@ import * as models from './models';\n\n`;
 
   return result;
 }
-
-/*{{#each def.routes}}
-{{#each methods}}
-{{#if action.requestBody}}
-export const {{action.name}} = (requestBody: models.{{action.requestBody}}): AxiosPromise => {
-  return axios.{{method}}("{{../path}}", requestBody);
-};
-{{^}}
-export const {{action.name}} = (): AxiosPromise => {
-  return axios.{{method}}("{{../path}}");
-};
-{{/if}}
-{{/each}}
-{{/each}}*/
